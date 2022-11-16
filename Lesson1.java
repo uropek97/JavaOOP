@@ -1,6 +1,12 @@
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class Lesson1 {
+    /*
     public static void main(String[] args) {
         Person p0 = new Person("0", LocalDate.of(1997, 12, 2), "Мужской");
         Person p1 = new Person("1", LocalDate.of(1998, 1, 1), "Мужской");
@@ -40,7 +46,16 @@ public class Lesson1 {
 
         System.out.println(FT.getInfoTree());
 
+        LinkedList<Integer> AL = new LinkedList<>();
+
+
+        Map<Integer, Integer> mp = new HashMap<>();
+
+
+
         System.out.println("/_____________________/");
         System.out.println(FT.getPerson());
     }
+
+     */
 }
