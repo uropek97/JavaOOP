@@ -2,23 +2,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class FamilyTree {
+public class FamilyTree implements Iterable<Person>{
     private Person person;
-    private LinkedList<Person> parents;
-    private LinkedList<Person> children;
-    private LinkedList<Person> siblings;
+    private Person mother;
+    private Person father;
+    private int knee;
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Person getMother() {
+        return mother;
+    }
+
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    public Person getFather() {
+        return father;
+    }
+
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
+    public int getKnee() {
+        return knee;
+    }
+
+    public void setKnee(int knee) {
+        this.knee = knee;
+    }
 
     public FamilyTree(){
         this.person = null;
-        this.parents = null;
-        this.children = null;
-        this.siblings = null;
+        this.mother = null;
+        this.father = null;
+        this.knee = 0;
     }
     public FamilyTree(Person person) {
         this.person = person;
-        this.parents = this.person.getParents();
-        this.children = this.person.getChildren();
-        this.siblings = this.person.getSiblings();
+        this.mother = this.person.getMother();
+        this.father = this.person.getFather();
+        this.knee = 1;
     }
 
     public Person getPerson() {
@@ -26,66 +54,21 @@ public class FamilyTree {
     }
 
     public void goMother(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Mother){
-                this.person = item.getKey();
-            }
-        }
+        this.person = this.mother;
+        this.mother = this.person.getMother();
+        this.father = this.person.getFather();
+        this.knee++;
     }
 
     public void goFather(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Father){
-                this.person = item.getKey();
-            }
-        }
+        this.person = this.father;
+        this.mother = this.person.getMother();
+        this.father = this.person.getFather();
+        this.knee++;
     }
 
-    public void goBrother(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Brother){
-                this.person = item.getKey();
-            }
-        }
+    @Override
+    public Iterator<Person> iterator() {
+        return new FamilyTreeIterator(this);
     }
-
-    public void goSister(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Sister){
-                this.person = item.getKey();
-            }
-        }
-    }
-
-    public void goDaughter(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Daughter){
-                this.person = item.getKey();
-            }
-        }
-    }
-
-    public void goSon(){
-        for (var item : this.person.relatives.entrySet()){
-            if (item.getValue() == Person.connection.Son){
-                this.person = item.getKey();
-            }
-        }
-    }
-
-    public void goSmb(String somebody){
-        if(somebody.equalsIgnoreCase("мать") || somebody.equalsIgnoreCase("мама"))
-            goMother();
-        else if(somebody.equalsIgnoreCase("отец") || somebody.equalsIgnoreCase("папа"))
-            goFather();
-        else if(somebody.equalsIgnoreCase("брат"))
-            goBrother();
-        else if(somebody.equalsIgnoreCase("сестра"))
-            goSister();
-        else if(somebody.equalsIgnoreCase("дочь"))
-            goDaughter();
-        else if(somebody.equalsIgnoreCase("сын"))
-            goSon();
-    }
-
 }
