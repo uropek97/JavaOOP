@@ -1,74 +1,37 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 
-public class FamilyTree implements Iterable<Person>{
+public class FamilyTree{
     private Person person;
-    private Person mother;
-    private Person father;
-    private int knee;
+    private FamilyTree mother;
+    private FamilyTree father;
 
-    public void setPerson(Person person) {
+    public FamilyTree(Person person, FamilyTree mother, FamilyTree father){
         this.person = person;
-    }
-
-    public Person getMother() {
-        return mother;
-    }
-
-    public void setMother(Person mother) {
         this.mother = mother;
-    }
-
-    public Person getFather() {
-        return father;
-    }
-
-    public void setFather(Person father) {
         this.father = father;
     }
 
-    public int getKnee() {
-        return knee;
-    }
-
-    public void setKnee(int knee) {
-        this.knee = knee;
-    }
-
-    public FamilyTree(){
-        this.person = null;
-        this.mother = null;
-        this.father = null;
-        this.knee = 0;
-    }
-    public FamilyTree(Person person) {
+    public FamilyTree(Person person){
         this.person = person;
-        this.mother = this.person.getMother();
-        this.father = this.person.getFather();
-        this.knee = 1;
+        if(this.person.getMother() != null)
+            this.mother = new FamilyTree(this.person.getMother());
+        if(this.person.getFather() != null)
+            this.father = new FamilyTree(this.person.getFather());
     }
 
-    public Person getPerson() {
-        return person;
-    }
+    public String print(){
+        StringBuilder SB = new StringBuilder();
 
-    public void goMother(){
-        this.person = this.mother;
-        this.mother = this.person.getMother();
-        this.father = this.person.getFather();
-        this.knee++;
-    }
+        if(mother != null)
+            SB.append(mother.print());
+        if(father != null)
+            SB.append(father.print());
 
-    public void goFather(){
-        this.person = this.father;
-        this.mother = this.person.getMother();
-        this.father = this.person.getFather();
-        this.knee++;
+        return SB.toString();
     }
 
     @Override
-    public Iterator<Person> iterator() {
-        return new FamilyTreeIterator(this);
+    public String toString() {
+        return this.person.toString();
     }
 }

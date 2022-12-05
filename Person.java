@@ -4,6 +4,7 @@ public class Person {
     private String name;
     private LocalDate birthday;
     private String sex;
+    //private Parents parents;
     private Person mother;
     private Person father;
 
@@ -19,27 +20,34 @@ public class Person {
         return sex;
     }
 
-    public Person getMother() {
-        return mother;
-    }
-
     public void setMother(Person mother) {
         this.mother = mother;
-    }
-
-    public Person getFather() {
-        return father;
     }
 
     public void setFather(Person father) {
         this.father = father;
     }
 
+    public Person getMother() {
+        return mother;
+    }
+
+    public Person getFather() {
+        return father;
+    }
+    // public Parents getParents() {
+   //     return parents;
+   // }
+//
+   // public void setParents(Parents parents) {
+   //     this.parents = parents;
+   // }
 
     public Person() {
         this.name = null;
         this.birthday = null;
         this.sex = null;
+        //this.parents = null;
         this.mother = null;
         this.father = null;
     }
@@ -58,6 +66,7 @@ public class Person {
         this(name, birthday, sex);
         this.mother = mother;
         this.father = father;
+        //this.parents = parents;
     }
 
     @Override
