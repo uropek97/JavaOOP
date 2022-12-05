@@ -1,13 +1,12 @@
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Person {
     private String name;
     private LocalDate birthday;
     private String sex;
-
-    public Map<Person, connection> relatives;
+    //private Parents parents;
+    private Person mother;
+    private Person father;
 
     public String getName() {
         return name;
@@ -21,41 +20,53 @@ public class Person {
         return sex;
     }
 
-    public Map<Person, connection> getRelatives() {
-        return relatives;
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
+    public Person getMother() {
+        return mother;
+    }
+
+    public Person getFather() {
+        return father;
+    }
+    // public Parents getParents() {
+   //     return parents;
+   // }
+//
+   // public void setParents(Parents parents) {
+   //     this.parents = parents;
+   // }
+
+    public Person() {
+        this.name = null;
+        this.birthday = null;
+        this.sex = null;
+        //this.parents = null;
+        this.mother = null;
+        this.father = null;
+    }
+    public Person(String name){
+        this();
+        this.name = name;
     }
 
     public Person(String name, LocalDate data, String sex){
-        this.name = name;
+        this(name);
         this.birthday = data;
         this.sex = sex;
-        this.relatives = new HashMap<>();
     }
 
-    public void addRelative(Person person, connection type){
-        if(relatives.containsKey(person)){
-            return;
-        }
-        this.relatives.put(person, type);
-
-        if(type == connection.Mother || type == connection.Father){
-            if(this.sex.equals("Мужской"))
-                person.addRelative(this, connection.Son);
-            else
-                person.addRelative(this, connection.Daughter);
-        }
-        else if(type == connection.Brother || type == connection.Sister){
-            if(this.sex.equals("Мужской"))
-                person.addRelative(this, connection.Brother);
-            else
-                person.addRelative(this, connection.Sister);
-        }
-        else{
-            if(this.sex.equals("Мужской"))
-                person.addRelative(this, connection.Father);
-            else
-                person.addRelative(this, connection.Mother);
-        }
+    public Person(String name, LocalDate birthday, String sex, Person mother, Person father) {
+        this(name, birthday, sex);
+        this.mother = mother;
+        this.father = father;
+        //this.parents = parents;
     }
 
     @Override
@@ -78,16 +89,6 @@ public class Person {
     @Override
     public String toString() {
         return String.format("%s, %s, пол: %s. ", this.name, this.birthday, this.sex);
-    }
-
-
-    public enum connection{
-        Mother,
-        Father,
-        Sister,
-        Brother,
-        Daughter,
-        Son
     }
 }
 
