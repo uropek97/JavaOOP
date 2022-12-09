@@ -3,5 +3,7 @@ public class Lesson5 {
         Presenter pr = new Presenter(new MyViev(), new MyModel());
         var a = pr.pickOption();
         pr.enter(a);
+
+        pr.printDataBase();
     }
 }
