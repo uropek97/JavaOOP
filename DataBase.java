@@ -5,7 +5,6 @@ import java.util.LinkedList;
 public class DataBase {
     File database = new File("users.txt");
 
-
     public void writeInBase(User user){
         try(FileWriter writer = new FileWriter(database.getPath(), true))
         {
@@ -18,10 +17,11 @@ public class DataBase {
 
     public LinkedList<String> readFile(){
         var list = new LinkedList<String>();
-        try(FileReader fr = new FileReader(database.getPath());
-            BufferedReader reader = new BufferedReader(fr)){
-            String line = reader.readLine();
-            list.add(line);
+        try(BufferedReader reader = new BufferedReader(new FileReader("D:\\JAVA\\ООП\\users.txt"))){
+            String line;
+            while((line = reader.readLine()) != null){
+                list.add(line);
+            }
             return list;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -41,5 +41,4 @@ public class DataBase {
         }
         return map;
     }
-
 }

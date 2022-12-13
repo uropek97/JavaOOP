@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Presenter {
     Viev viev;
     Model model;
@@ -40,5 +42,12 @@ public class Presenter {
         String choice = viev.getData("Ваш выбор: ");
         //требуется допилить
         return choice.equals("1");
+    }
+
+    public void printDataBase(){
+        LinkedList<String> a = model.getUsers();
+        for(var item : a){
+            viev.printData(item, true);
+        }
     }
 }

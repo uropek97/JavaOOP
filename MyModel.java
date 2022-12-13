@@ -1,10 +1,9 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class MyModel implements Model {
     static DataBase file = new DataBase();
     private HashMap<String ,User> database = file.getDataBase(file.readFile());
-
-
 
     @Override
     public boolean signUp(String login, String pass){
@@ -23,5 +22,13 @@ public class MyModel implements Model {
         }
         else
             return false;
+    }
+
+    public LinkedList<String> getUsers(){
+        var list = new LinkedList<String>();
+        var i = 1;
+        for(var item : this.database.entrySet())
+            list.add(i++ + ") Пользователь: " + item.getKey() + " *какая-то ещё инфа*.");
+        return list;
     }
 }
