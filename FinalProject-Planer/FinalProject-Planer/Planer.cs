@@ -14,25 +14,25 @@
             this.Purposes = new List<MyPurpose>();
         }
 
-        public MyTask createNewTask(string name)
+        public MyTask CreateNewTask(string name)
         {
             var a = new MyTask(name);
             this.Tasks!.Add(a);
             return a;
         }
 
-        public MyPurpose createNewPurpose(string name)
+        public MyPurpose CreateNewPurpose(string name)
         {
             var a = new MyPurpose(name);
             this.Purposes!.Add(a);
             return a;
         }
 
-        public void addTask(MyTask task)
+        public void AddTask(MyTask task)
         {
             this.Tasks!.Add(task);
         }
-        public void addPurpose(MyPurpose purpose)
+        public void AddPurpose(MyPurpose purpose)
         {
             this.Purposes!.Add(purpose);
         }

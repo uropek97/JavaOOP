@@ -4,27 +4,31 @@
     {
         private string? name;
         private List<MyTask>? tasks;
+        private DateTime creationDate;
+        private bool ifDone;
 
         public string? Name { get { return name; } set { name = value; } }
         public List<MyTask>? Tasks { get { return tasks; } set { tasks = value; } }
+        public DateTime CreationDate { get { return creationDate; } set { creationDate = value; } }
+        public bool IfDone { get { return ifDone; } set { ifDone = value; } }
 
-        public MyPurpose() { }
-
-        public MyPurpose(string? name)
+        public MyPurpose() 
         {
-            this.Name = name;
             this.Tasks = new List<MyTask>();
+            this.CreationDate = DateTime.Now;
+            this.IfDone = false;
         }
 
-        public MyPurpose(string? name, MyTask myTask) : this(name)
+        public MyPurpose(string? name) : this()
         {
-            this.Tasks!.Add(myTask);
+            this.Name = name;           
         }
 
-        public MyPurpose(string? name, List<MyTask> myTasks) : this(name)
+        public void CreateTask(string? name)
         {
-            this.Tasks!.AddRange(myTasks);
+            this.Tasks!.Add(new MyTask(name));
         }
+
 
         public override string ToString()
         {
