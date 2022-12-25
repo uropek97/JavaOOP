@@ -8,7 +8,12 @@ namespace FinalProject_Planer
 
         private XmlSerializer? _Xml;
 
-        public XmlSerializer? Xml { get { return _Xml; } private set { _Xml = new XmlSerializer(typeof(Planer)); } }
+        public XmlSerializer? Xml { get { return _Xml; } private set { _Xml = value; } }
+
+        public MyXMLFileHelper()
+        {
+            Xml = _Xml = new XmlSerializer(typeof(Planer));
+        }
 
         public Planer Read()
         {
