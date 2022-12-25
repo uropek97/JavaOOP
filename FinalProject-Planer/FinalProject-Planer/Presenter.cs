@@ -24,6 +24,7 @@ namespace FinalProject_Planer
             var help = new HelpCommand(this._UserInterface, this);
             var exit = new ExitCommand(this);
             var addPurpComm = new AddPurpuseCommand(this._UserInterface, this);
+            var addTaskComm = new AddTaskCommand(this._UserInterface, this);
             this.Commands = new Dictionary<string, PlanerCommand>()
             {
                 {"help", help },
@@ -33,6 +34,10 @@ namespace FinalProject_Planer
                 {"PrintAll", new PrintAllCommand(this._UserInterface!, this) },
                 {"AddPurpuse", addPurpComm },
                 {"AddP", addPurpComm },
+                {"AddTask", addTaskComm },
+                {"AddT", addTaskComm },
+                {"RemoveP", new RemovePurposeCommand(this._UserInterface!, this) },
+                {"RemoveT", new RemoveTaskCommand(this._UserInterface, this) },
             };
         }
 

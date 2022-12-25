@@ -36,5 +36,21 @@
         {
             this.Purposes!.Add(purpose);
         }
+
+        public void RemoveTask(string name)
+        {
+            if (this.Tasks!.Contains(new MyTask(name)))
+            {
+                this.Tasks.Remove(new MyTask(name));
+            }
+        }
+
+        public void RemovePurpuse(string name)
+        {
+            if (this.Purposes!.Contains(new MyPurpose(name)))
+            {
+                this.Purposes!.Remove(new MyPurpose(name));
+            }
+        }
     }
 }

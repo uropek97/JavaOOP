@@ -1,6 +1,6 @@
 ﻿namespace FinalProject_Planer
 {
-    public class MyTask
+    public class MyTask : IEquatable<MyTask>
     {
         private string? _Name;
         private DateTime _CreationDate;
@@ -30,6 +30,13 @@
                 return $"[x] {this.Name!.ToString()}";
             else
                 return $"[ ] {this.Name!.ToString()}";
+        }
+
+        public bool Equals(MyTask? other)
+        {
+            if (other == null)
+                return false;
+            return this.Name == other.Name;
         }
     }
 }

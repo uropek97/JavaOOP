@@ -17,7 +17,7 @@ namespace FinalProject_Planer.Commands
 
         public override void Execute(string[] args)
         {
-            _Presenter!.Planer!.AddPurpose(new MyPurpose(_UserInterface.getData("Название: ")));
+            _Presenter!.Planer!.AddPurpose(new MyPurpose(_UserInterface!.getData("Название: ")));
             _Presenter.Save();
         }
     }

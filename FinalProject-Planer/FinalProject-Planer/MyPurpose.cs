@@ -1,6 +1,6 @@
 ﻿namespace FinalProject_Planer
 {
-    public class MyPurpose
+    public class MyPurpose : IEquatable<MyPurpose>
     {
         private string? _Name;
         private List<MyTask>? _Tasks;
@@ -34,12 +34,35 @@
             this.IfDone = true;
         }
 
+        public void RemoveTask(string name)
+        {
+            if(this.Tasks!.Contains(new MyTask(name)))
+            {
+                this.Tasks.Remove(new MyTask(name));
+            }
+        }
+       
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+                return false;
+            var other = obj as MyPurpose;
+            return (this.Name == other!.Name);
+        }
+
         public override string ToString()
         {
             if (this.IfDone)
                 return $"[x] {this.Name!.ToString()}";
             else
                 return $"[ ] {this.Name!.ToString()}";
+        }
+
+        public bool Equals(MyPurpose? other)
+        {
+            if (other == null)
+                return false;
+            return this.Name == other.Name;
         }
     }
 }
