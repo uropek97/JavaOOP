@@ -8,6 +8,7 @@ namespace FinalProject_Planer
         private Planer? _Planer;
         private readonly IUserInterface? _UserInterface;
         private readonly IMyFileHelper? _FileHelper;
+        private bool _CanWork;
 
         public Planer? Planer { get { return _Planer; } set { _Planer = value; } }
 
@@ -18,12 +19,16 @@ namespace FinalProject_Planer
             this._UserInterface = userInteface;
             this._FileHelper = fileHelper;
             this.Planer = this._FileHelper.Read();
+            this._CanWork = true;
 
             var help = new HelpCommand(this._UserInterface, this);
+            var exit = new ExitCommand(this);
             this.Commands = new Dictionary<string, PlanerCommand>()
             {
                 {"help", help },
                 {"?", help },
+                {"exit", exit },
+                {"quit", exit },
             };
         }
 
@@ -53,6 +58,11 @@ namespace FinalProject_Planer
                     _UserInterface.printMessage(e.Message, true);
                 }
             } while (true);
+        }
+
+        public void Stop()
+        {
+            this._CanWork = false;
         }
     }
 }
