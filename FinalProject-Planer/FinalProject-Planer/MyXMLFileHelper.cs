@@ -4,17 +4,23 @@ namespace FinalProject_Planer
 {
     public class MyXMLFileHelper : IMyFileHelper
     {
-        private FileInfo file = new FileInfo("planer.txt");
+        private static string fileName = "planer.txt";
 
         public XmlSerializer? Xml = new XmlSerializer(typeof(Planer));
-        public string Read(string fileName)
+        public Planer Read()
         {
-            throw new NotImplementedException();
+            using(var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                return (Planer)this.Xml!.Deserialize(fs)!;
+            }
         }
 
-        public void Write(string data, string fileName)
+        public void Write(Planer planer)
         {
-            throw new NotImplementedException();
+            using(var fs = new FileStream(fileName, FileMode.Open, FileAccess.Write))
+            {
+                this.Xml!.Serialize(fs, planer);
+            }
         }
     }
 }

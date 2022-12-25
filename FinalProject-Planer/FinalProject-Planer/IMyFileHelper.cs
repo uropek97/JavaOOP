@@ -2,8 +2,8 @@
 {
     public interface IMyFileHelper
     {
-        public void Write(string data, string fileName);
+        public void Write(Planer planer);
 
-        public string Read(string fileName);
+        public Planer Read();
     }
 }
