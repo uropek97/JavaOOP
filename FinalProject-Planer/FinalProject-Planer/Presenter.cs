@@ -36,8 +36,9 @@ namespace FinalProject_Planer
                 {"AddP", addPurpComm },
                 {"AddTask", addTaskComm },
                 {"AddT", addTaskComm },
-                {"RemoveP", new RemovePurposeCommand(this._UserInterface!, this) },
+                {"RemoveP", new RemovePurposeCommand(this._UserInterface, this) },
                 {"RemoveT", new RemoveTaskCommand(this._UserInterface, this) },
+                {"GetInfoP", new GetPurouseFullinfoCommand(this._UserInterface, this) },
             };
         }
 

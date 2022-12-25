@@ -41,14 +41,6 @@
                 this.Tasks.Remove(new MyTask(name));
             }
         }
-       
-        public override bool Equals(object? obj)
-        {
-            if (obj == null)
-                return false;
-            var other = obj as MyPurpose;
-            return (this.Name == other!.Name);
-        }
 
         public override string ToString()
         {
