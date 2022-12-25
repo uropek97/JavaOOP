@@ -29,10 +29,17 @@
             this.Tasks!.Add(new MyTask(name));
         }
 
+        public void Finish()
+        {
+            this.IfDone = true;
+        }
 
         public override string ToString()
         {
-            return this.Name!.ToString();
+            if (this.IfDone)
+                return $"[x] {this.Name!.ToString()}";
+            else
+                return $"[ ] {this.Name!.ToString()}";
         }
     }
 }

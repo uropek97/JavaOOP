@@ -27,9 +27,9 @@
         public override string ToString()
         {
             if (this.IfDone)
-                return $"[ ] {this.Name!.ToString()}";
-            else
                 return $"[x] {this.Name!.ToString()}";
+            else
+                return $"[ ] {this.Name!.ToString()}";
         }
     }
 }

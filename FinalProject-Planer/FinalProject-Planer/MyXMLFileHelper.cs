@@ -4,7 +4,7 @@ namespace FinalProject_Planer
 {
     public class MyXMLFileHelper : IMyFileHelper
     {
-        private static string fileName = "planer.txt";
+        private static string fileName = "planer.xml";
 
         private XmlSerializer? _Xml;
 
