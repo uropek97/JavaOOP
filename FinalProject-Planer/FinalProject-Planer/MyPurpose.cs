@@ -24,7 +24,7 @@
             this.Name = name;           
         }
 
-        public void CreateTask(string? name)
+        public void AddTask(string? name)
         {
             this.Tasks!.Add(new MyTask(name));
         }

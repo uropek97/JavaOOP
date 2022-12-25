@@ -40,6 +40,7 @@ namespace FinalProject_Planer
                 {"RemoveT", new RemoveTaskCommand(this._UserInterface, this) },
                 {"GetInfoP", new GetPurouseFullinfoCommand(this._UserInterface, this) },
                 {"GetInfoT", new GetTaskFullinfoCommand(this._UserInterface, this) },
+                {"AddTaskToP", new AddTaskToPurposeCommand(this._UserInterface, this) },
             };
         }
 
