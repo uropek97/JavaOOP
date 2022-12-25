@@ -6,7 +6,10 @@ namespace FinalProject_Planer
     {
         private static string fileName = "planer.txt";
 
-        public XmlSerializer? Xml = new XmlSerializer(typeof(Planer));
+        private XmlSerializer? _Xml;
+
+        public XmlSerializer? Xml { get { return _Xml; } private set { _Xml = new XmlSerializer(typeof(Planer)); } }
+
         public Planer Read()
         {
             using(var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))

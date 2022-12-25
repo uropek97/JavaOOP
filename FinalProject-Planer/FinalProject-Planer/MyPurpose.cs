@@ -2,15 +2,15 @@
 {
     public class MyPurpose
     {
-        private string? name;
-        private List<MyTask>? tasks;
-        private DateTime creationDate;
-        private bool ifDone;
+        private string? _Name;
+        private List<MyTask>? _Tasks;
+        private DateTime _CreationDate;
+        private bool _IfDone;
 
-        public string? Name { get { return name; } set { name = value; } }
-        public List<MyTask>? Tasks { get { return tasks; } set { tasks = value; } }
-        public DateTime CreationDate { get { return creationDate; } set { creationDate = value; } }
-        public bool IfDone { get { return ifDone; } set { ifDone = value; } }
+        public string? Name { get { return _Name; } set { _Name = value; } }
+        public List<MyTask>? Tasks { get { return _Tasks; } set { _Tasks = value; } }
+        public DateTime CreationDate { get { return _CreationDate; } set { _CreationDate = value; } }
+        public bool IfDone { get { return _IfDone; } set { _IfDone = value; } }
 
         public MyPurpose() 
         {

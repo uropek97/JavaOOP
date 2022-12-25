@@ -2,10 +2,10 @@
 {
     public class Planer
     {
-        private List<MyTask>? tasks;
-        private List<MyPurpose>? purposes;
-        public List<MyTask>? Tasks { get { return tasks; } private set { tasks = value; } }
-        public List<MyPurpose>? Purposes { get { return purposes; } private set { purposes = value; } }
+        private List<MyTask>? _Tasks;
+        private List<MyPurpose>? _Purposes;
+        public List<MyTask>? Tasks { get { return _Tasks; } set { _Tasks = value; } }
+        public List<MyPurpose>? Purposes { get { return _Purposes; } set { _Purposes = value; } }
 
 
         public Planer()

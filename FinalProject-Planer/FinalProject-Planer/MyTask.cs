@@ -2,13 +2,13 @@
 {
     public class MyTask
     {
-        private string? name;
-        private DateTime creationDate;
-        private bool ifDone;
+        private string? _Name;
+        private DateTime _CreationDate;
+        private bool _IfDone;
 
-        public string? Name { get { return name; } set { name = value; } }
-        public DateTime CreationDate { get { return creationDate; } set { creationDate = value; } }
-        public bool IfDone { get { return ifDone; } set { ifDone = value; } }
+        public string? Name { get { return _Name; } set { _Name = value; } }
+        public DateTime CreationDate { get { return _CreationDate; } set { _CreationDate = value; } }
+        public bool IfDone { get { return _IfDone; } set { _IfDone = value; } }
         public MyTask()
         {
             this.CreationDate = DateTime.Now;
@@ -16,7 +16,7 @@
         }
         public MyTask(string? name) : this()
         {
-            this.name = name;
+            this._Name = name;
         }
 
         public void Finish()
@@ -26,7 +26,7 @@
 
         public override string ToString()
         {
-            if (this.ifDone)
+            if (this.IfDone)
                 return $"[ ] {this.Name!.ToString()}";
             else
                 return $"[x] {this.Name!.ToString()}";
