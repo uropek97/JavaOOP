@@ -23,12 +23,16 @@ namespace FinalProject_Planer
 
             var help = new HelpCommand(this._UserInterface, this);
             var exit = new ExitCommand(this);
+            var addPurpComm = new AddPurpuseCommand(this._UserInterface, this);
             this.Commands = new Dictionary<string, PlanerCommand>()
             {
                 {"help", help },
                 {"?", help },
                 {"exit", exit },
                 {"quit", exit },
+                {"PrintAll", new PrintAllCommand(this._UserInterface!, this) },
+                {"AddPurpuse", addPurpComm },
+                {"AddP", addPurpComm },
             };
         }
 
@@ -57,12 +61,17 @@ namespace FinalProject_Planer
                     _UserInterface.printMessage($"При выполнении команды {commandName} произошла ошибка;", true);
                     _UserInterface.printMessage(e.Message, true);
                 }
-            } while (true);
+            } while (this._CanWork);
         }
 
         public void Stop()
         {
             this._CanWork = false;
+        }
+
+        public void Save()
+        {
+            _FileHelper!.Write(this._Planer!);
         }
     }
 }
